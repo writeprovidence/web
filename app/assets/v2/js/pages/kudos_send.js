@@ -512,6 +512,8 @@ function sendKudos(email, github_url, from_name, username, amountInEth, comments
               kudosPriceInWei: kudosPriceInWei.toNumber()
             };
             console.log(money);
+            var ethBuffer = 1.1;
+            var value = (gas_money + kudosGasEstimateInWei + kudosPriceInWei.toNumber()) * ethBuffer;
             web3.eth.sendTransaction({
               to: destinationAccount,
               // Add gas_money + gas cost for kudos contract transaction + cost of kudos token (Gitcoin keeps this amount?)
